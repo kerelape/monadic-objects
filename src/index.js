@@ -53,3 +53,5 @@ const filterEachEntryOf = (object, block) => {
         .forEach(([key, value]) => result[key] = value)
     return result
 }
+
+module.exports = { forEachEntryOf, mapEachEntryOf, filterEachEntryOf }
