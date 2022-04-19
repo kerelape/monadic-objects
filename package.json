@@ -1,0 +1,10 @@
+{
+  "name": "monadic-objects",
+  "version": "0.0.1",
+  "description": "Functions to operate on objects",
+  "main": "src/index.js",
+  "repository": "https://github.com/kerelape/monadic-objects.git",
+  "author": "kerelape",
+  "license": "MIT",
+  "private": false
+}
