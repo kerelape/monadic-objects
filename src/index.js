@@ -6,6 +6,9 @@
  * @returns {object} Copy of the original object
  */
 const forEachEntryOf = (object, block) => {
+    if (typeof object !== "object") {
+        throw new Error("can ony work with objects")
+    }
     if (typeof block !== "function") {
         throw new Error("block is not a function")
     }
