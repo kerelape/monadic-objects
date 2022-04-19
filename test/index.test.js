@@ -1,9 +1,19 @@
-const assert = require("assert")
+const { ok, throws } = require("assert");
+const index = require("../src/index");
 
-describe("dummy", () => {
-    describe("useless", () => {
-        it("must pass", () => {
-            assert.equal(true, true)
-        })
-    })
-})
+describe("forEach", () => {
+    it("fails without 'block'", () => {
+        throws(() => ({}).forEach())
+    });
+    it("fails with incorrect 'block'", () => {
+        throws(() => ({}).forEach(666));
+    });
+    describe("iterates", () => {
+        it("over empty object", () => {
+            ok(() => ({}).forEach(() => {}));
+        });
+        it("over simple object", () => {
+            ok(() => ({ a: "a", b: "b" }).forEach(() => {}));
+        });
+    });
+});
