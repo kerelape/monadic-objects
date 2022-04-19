@@ -5,9 +5,14 @@ describe("forEach", () => {
     it("fails without 'block'", () => {
         throws(() => ({}).forEach())
     });
-    it("fails with incorrect 'block'", () => {
-        throws(() => ({}).forEach(666));
-    });
+    describe("fails with incorrect 'block'", () => {
+        [0, "", Symbol(), [], {}, undefined, false]
+            .forEach(block => {
+                it(`of type ${typeof block}`, () => {
+                    throws(() => ({}).forEach(block));
+                });
+            });
+    })
     describe("iterates", () => {
         it("over empty object", () => {
             ok(() => ({}).forEach(() => {}));
