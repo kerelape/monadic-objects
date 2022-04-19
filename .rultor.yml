@@ -1,0 +1,10 @@
+architect:
+  - kerelape
+
+merge:
+  commanders:
+    - kerelape
+
+  script:
+    - "npm install"
+    - "npm test"
