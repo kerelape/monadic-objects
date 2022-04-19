@@ -57,17 +57,16 @@ const filterEachEntryOf = (object, block) => {
     return result
 }
 
-Object.prototype = {
-    ...Object.prototype,
-    forEach: function(block) {
-        return forEachEntryOf(this, block)
-    },
-    map: function(block) {
-        return mapEachEntryOf(this, block)
-    },
-    filter: function(block) {
-        return filterEachEntryOf(this, block)
-    }
+Object.prototype.forEach = function(block) {
+    return forEachEntryOf(this, block)
+}
+
+Object.prototype.map = function(block) {
+    return mapEachEntryOf(this, block)
+}
+
+Object.prototype.filter = function(block) {
+    return filterEachEntryOf(this, block)
 }
 
 module.exports = { forEachEntryOf, mapEachEntryOf, filterEachEntryOf }
