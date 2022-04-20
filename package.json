@@ -1,5 +1,5 @@
 {
-  "name": "@kerelape/monadic-objects",
+  "name": "monadic-objects",
   "version": "1.0.0",
   "description": "Functions to operate on objects",
   "main": "src/index.js",
