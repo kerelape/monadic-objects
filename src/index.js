@@ -51,8 +51,8 @@ const filterEachEntryOf = (object, block) => {
     }
     const result = {}
     Object.keys(object)
-        .map(key => [key, value, block(key, value)])
-        .filter(([key, value, flag]) => flag)
+        .map(key => [key, object[key]])
+        .filter(([key, value]) => block(key, value))
         .forEach(([key, value]) => result[key] = value)
     return result
 }
