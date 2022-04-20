@@ -50,3 +50,31 @@ describe("map", () => {
         );
     });
 });
+
+describe("filter", () => {
+    it("fails without 'block'", () => {
+        throws(() => ({}).filter())
+    });
+    describe("fails with incorrect 'block'", () => {
+        [0, "", Symbol(), [], {}, undefined, false]
+            .forEach(block => {
+                it(`of type ${typeof block}`, () => {
+                    throws(() => ({}).filter(block));
+                });
+            });
+    })
+    it("can filter keys", () => {
+        deepEqual(
+            ({ a: "b", c: "c" })
+                .filter((key, value) => key != "a"),
+            ({ c: "c" })
+        );
+    });
+    it("can filter values", () => {
+        deepEqual(
+            ({ a: "", c: "c" })
+                .filter((key, value) => Boolean(value)),
+            ({ c: "c" })
+        );
+    });
+});
