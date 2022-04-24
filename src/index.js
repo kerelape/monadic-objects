@@ -1,20 +1,24 @@
 
-/**
- * 
- * @param {object} object 
- * @param {(key: string, value: any) => void} block 
- * @returns {object} Copy of the original object
- */
-const forEachEntryOf = (object, block) => {
+function checkParameters(object, block, successCallback) {
     if (typeof object !== "object") {
         throw new Error("can ony work with objects")
     }
     if (typeof block !== "function") {
         throw new Error("block is not a function")
     }
+    return successCallback(object, block)
+}
+
+/**
+ * 
+ * @param {object} object 
+ * @param {(key: string, value: any) => void} block 
+ * @returns {object} Copy of the original object
+ */
+const forEachEntryOf = (object, block) => checkParameters(object, block, (object, block) => {
     Object.keys(object).forEach(key => block(String(key), object[key]))
     return { ...object }
-}
+})
 
 /**
  * 
@@ -22,19 +26,13 @@ const forEachEntryOf = (object, block) => {
  * @param {(key: string, value: any) => [key: string, value: any]} block 
  * @returns {object} The modified object
  */
-const mapEachEntryOf = (object, block) => {
-    if (typeof object !== "object") {
-        throw new Error("can only work with objects")
-    }
-    if (typeof block !== "function") {
-        throw new Error("block is not a function")
-    }
+const mapEachEntryOf = (object, block) => checkParameters(object, block, (object, block) => {
     const result = {}
     Object.keys(object)
         .map(key => block(String(key), object[key]))
         .forEach(([key, value]) => result[key] = value)
     return result
-}
+})
 
 /**
  * 
@@ -42,20 +40,14 @@ const mapEachEntryOf = (object, block) => {
  * @param {(key: string, value: any) => boolean} block
  * @returns {object} 
  */
-const filterEachEntryOf = (object, block) => {
-    if (typeof object !== "object") {
-        throw new Error("can ony work with objects")
-    }
-    if (typeof block !== "function") {
-        throw new Error("block is not a function")
-    }
+const filterEachEntryOf = (object, block) => checkParameters(object, block, (object, block) => {
     const result = {}
     Object.keys(object)
         .map(key => [key, value, block(key, value)])
         .filter(([key, value, flag]) => flag)
         .forEach(([key, value]) => result[key] = value)
     return result
-}
+})
 
 Object.prototype.forEach = function(block) {
     return forEachEntryOf(this, block)
