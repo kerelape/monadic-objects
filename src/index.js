@@ -56,7 +56,7 @@ const filterEachEntryOf = (object, block) => checkParameters(object, block, (obj
  * @returns {boolean} `true` when every block for pair of key-value returned true 
  */
 const everyEntryOf = (object, block) => checkParameters(object, block, (object, block) => {
-    return mapEachEntryOf(object, block).every(Boolean)
+    return Object.entries(object).every(([key, value]) => block(key, value))
 })
 
 Object.prototype.forEach = function(block) {
