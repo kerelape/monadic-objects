@@ -23,57 +23,66 @@ For example you can do `({ a: 1, b: 2, c: 3 }).map((key, value) => [key, value *
 
 ### Usage
 
-> Every function of this library does not modify the original object - it creates a new one (shallow copying), thus they can be chained
-> like the functions of an Array.
+#### `forEach`
 
-### `forEach`
-
-#### Signature
+##### Signature
 
 ```javascript
-(block: (key: string, value: any) => void) => object
+object.forEach(block: (key: string, value: any) => void) => object
 ```
 
-#### Usage
+##### Returns
+
+> Shallow copy of the original object
+
+#### `map`
+
+##### Signature
 
 ```javascript
-({ a: 1, b: "two" }).forEach(console.log)
-  
-// > "a", 1
-// > "b", "two"
+object.map(block: (key: string, value: any) => [key: string, value: any]) => object
 ```
 
-### `Map`
+##### Returns
 
-#### Signature
+> Modified copy of the original object
+
+#### `filter`
+
+##### Signature
 
 ```javascript
-(block: (key: string, value: any) => [string, any]) => object
+object.filter(block: (key: string, value: any) => boolean) => object
 ```
 
-#### Usage
+##### Returns
+
+> Filtered copy of the original object
+
+#### `every`
+
+##### Signature
 
 ```javascript
-({ a: 1, b: "two" }).map((key, value) => [key, value + value])
-
-// result > { a: 2, b: "twotwo" }
+object.every(block: (key: string, value: any) => boolean) => boolean
 ```
 
-### `Filter`
+##### Returns
 
-#### Signature 
+> `true` if every block call returned `true`, otherwise - `false`
+
+#### `some`
+
+##### Signature
 
 ```javascript
-(block: (key: string, value: any) => boolean) => object
+object.some(block: (key: string, value: any) => boolean) => boolean
 ```
 
-#### Usage
+##### Returns
 
-```javascript
-({ a: 1, b: "two", c: false, d: true }).filter((key, value) => Boolean(value))
-  
-// result > { a: 1, b: "two", d: true }
-```
+> `true` if at least one block call returned `true`, otherwise - `false`
+
 ## Contribution
 
 To contribute to this project - fork it, make a change (on a new branch, otherwise I reject), and open a pull request to develop.
