@@ -2,6 +2,8 @@
 
 > Collection of functions to modify objects
 
+[![Test](https://github.com/kerelape/monadic-objects/actions/workflows/test.yml/badge.svg?branch=main&event=push)](https://github.com/kerelape/monadic-objects/actions/workflows/test.yml)
+
 ## What is this libary about?
 
 This library lets you operate javascript objects in a more convenient way than `Object.keys(...)`. 
