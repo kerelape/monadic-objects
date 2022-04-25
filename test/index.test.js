@@ -132,3 +132,57 @@ describe("every", () => {
         });
     });
 });
+
+describe("some", () => {
+    it("fails without 'block'", () => {
+        throws(() => ({}).some())
+    });
+    describe("fails with incorrect 'block'", () => {
+        [0, "", Symbol(), [], {}, undefined, false]
+            .forEach(block => {
+                it(`of type ${typeof block}`, () => {
+                    throws(() => ({}).some(block));
+                });
+            });
+    })
+    describe("can check keys", () => {
+        it("when every key starts with an underscore", () => {
+            equal(
+                ({ _a: 1, _b: 2 }).some(key => key.startsWith("_")),
+                true
+            );
+        });
+        it("when some keys do not start with an underscore", () => {
+            equal(
+                ({ a: 1, _b: 2 }).some(key => key.startsWith("_")),
+                true
+            );
+        })
+        it("when not a single key starts with an underscore", () => {
+            equal(
+                ({ a: 1, b: 2 }).some(key => key.startsWith("_")),
+                false
+            );
+        });
+    });
+    describe("can check values", () => {
+        it("when every value is a number", () => {
+            equal(
+                ({ a: 1, b: 2 }).some((key, value) => typeof value == "number"),
+                true
+            );
+        });
+        it("when some values are not numbers", () => {
+            equal(
+                ({ a: 1, b: "abc" }).some((key, value) => typeof value == "number"),
+                true
+            );
+        })
+        it("when not a single value is a number", () => {
+            equal(
+                ({ a: "foo", b: "bar" }).some((key, value) => typeof value == "number"),
+                false
+            );
+        });
+    });
+});
