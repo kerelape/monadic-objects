@@ -49,6 +49,16 @@ const filterEachEntryOf = (object, block) => checkParameters(object, block, (obj
     return result
 })
 
+/**
+ * 
+ * @param {object} object 
+ * @param {(key: String, value: any) => boolean} block 
+ * @returns 
+ */
+const everyEntryOf = (object, block) => checkParameters(object, block, (object, block) => {
+    return Object.entries(object).length == Object.entries(object).filter(([key, value]) => block(key, value)).length
+})
+
 Object.prototype.forEach = function(block) {
     return forEachEntryOf(this, block)
 }
@@ -61,4 +71,8 @@ Object.prototype.filter = function(block) {
     return filterEachEntryOf(this, block)
 }
 
-module.exports = { forEachEntryOf, mapEachEntryOf, filterEachEntryOf }
+Object.prototype.every = function(block) {
+    return everyEntryOf(this, block)
+}
+
+module.exports = { forEachEntryOf, mapEachEntryOf, filterEachEntryOf, everyEntryOf }
