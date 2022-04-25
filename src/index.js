@@ -42,8 +42,8 @@ const mapEachEntryOf = (object, block) => checkParameters(object, block, (object
  */
 const filterEachEntryOf = (object, block) => checkParameters(object, block, (object, block) => {
     const result = {}
-    Object.keys(object)
-        .map(key => [key, value, block(key, value)])
+    Object.entries(object)
+        .map(([key, value]) => [key, value, block(key, value)])
         .filter(([key, value, flag]) => flag)
         .forEach(([key, value]) => result[key] = value)
     return result
