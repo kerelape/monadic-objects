@@ -7,6 +7,19 @@
   "author": "kerelape",
   "license": "MIT",
   "private": false,
+  "keywords": [
+    "object",
+    "monad",
+    "objects",
+    "monads",
+    "unitily",
+    "functional",
+    "map",
+    "forEach",
+    "filter",
+    "every",
+    "some"
+  ],
   "scripts": {
     "test": "mocha"
   },
