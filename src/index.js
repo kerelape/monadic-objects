@@ -53,7 +53,7 @@ const filterEachEntryOf = (object, block) => checkParameters(object, block, (obj
  * 
  * @param {object} object 
  * @param {(key: String, value: any) => boolean} block 
- * @returns 
+ * @returns {boolean} `true` when every block for pair of key-value returned true 
  */
 const everyEntryOf = (object, block) => checkParameters(object, block, (object, block) => {
     return mapEachEntryOf(object, block).every(Boolean)
