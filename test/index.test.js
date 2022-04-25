@@ -126,7 +126,7 @@ describe("every", () => {
         })
         it("when not a single value is a number", () => {
             equal(
-                ({ a: 1, b: 2 }).every((key, value) => typeof value == "number"),
+                ({ a: "foo", b: "bar" }).every((key, value) => typeof value == "number"),
                 false
             );
         });
