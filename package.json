@@ -1,6 +1,6 @@
 {
   "name": "monadic-objects",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Functions to operate on objects",
   "main": "src/index.js",
   "repository": "https://github.com/kerelape/monadic-objects.git",
