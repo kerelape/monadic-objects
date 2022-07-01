@@ -19,7 +19,7 @@ For example you can do `({ a: 1, b: 2, c: 3 }).map((key, value) => [key, value *
 
 #### Yarn
 
-`yarn add monadic-object`
+`yarn add monadic-objects`
 
 ### Usage
 
